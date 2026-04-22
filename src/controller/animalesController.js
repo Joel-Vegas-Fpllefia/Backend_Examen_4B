@@ -55,7 +55,7 @@ const update_animales = async (req, res) => {
         error: "No se ha encontrado la mascota indicada",
       });
     }
-    res.json(update_animal);
+    res.json(updated_animal);
   } catch (err) {
     res.status(500).json({
       error: err.message,
