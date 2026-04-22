@@ -33,4 +33,38 @@ const get_animales_id = (req, res) => {
   res.json(animal);
 };
 
-export { get_animales, get_animales_id };
+// CREAR MASCOTA
+const create_animales = (req, res) => {
+  const { nom, raza, foto } = req.body;
+  const id = String(Animales.length + 1);
+
+  const nova = { id, nom, raza, foto };
+  Animales.push(nova);
+  res.status(201).json(nova);
+};
+
+// EDITAR MASCOTA
+const update_animales = (req, res) => {
+  const { id } = req.params;
+  const index = Animales.findIndex((c) => c.id === id);
+  if (index === -1) {
+    return res.status(404).json({
+      error: "Animal no encontrado",
+    });
+  }
+  Animales[index] = { ...Animales[index], ...req.body, id };
+  res.json(Animales[index]);
+};
+
+const delete_animal = (req, res) => {
+  const { id } = req.params;
+  const index = Animales.findIndex((c) => c.id === id);
+  if (index === -1) {
+    return res.status(404).json({
+      error: "Animal no encontrado",
+    });
+  }
+  Animales.splice(index, 1);
+  res.status(204).send();
+};
+export { get_animales, get_animales_id, create_animales, update_animales,delete_animal };
