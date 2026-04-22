@@ -1,5 +1,5 @@
 {
-  "name":"Joel Vegas Romero Tienda Animal",
+  "name":"Joel_Vegas_Romero_Tienda_Animal",
   "type": "module",
   "scripts": {
     "dev":"nodemon src/app.js"
