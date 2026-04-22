@@ -37,10 +37,10 @@ const get_animales_id = (req, res) => {
 
 // CREAR MASCOTA
 const create_animales = (req, res) => {
-  const { nom, raza, foto } = req.body;
+  const { nom, raza,tipus, foto } = req.body;
   const id = String(Animales.length + 1);
 
-  const nova = { id, nom, raza, foto };
+  const nova = { id, nom,tipus, raza, foto };
   Animales.push(nova);
   res.status(201).json(nova);
 };
