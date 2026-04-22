@@ -19,7 +19,7 @@ const protegir = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.usuari = await Usuarios.findById(decoded.id);
 
-    if (!res.usuari) {
+    if (!req.usuari) {
       return res.status(401).json({
         error: "Usuario No Valido token",
       });
