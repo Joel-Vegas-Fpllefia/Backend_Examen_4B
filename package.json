@@ -1,13 +1,15 @@
 {
-  "name":"Joel_Vegas_Romero_Tienda_Animal",
+  "name": "Joel_Vegas_Romero_Tienda_Animal",
   "type": "module",
   "scripts": {
-    "dev":"nodemon src/app.js"
+    "dev": "nodemon src/app.js"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.5.0"
   },
   "devDependencies": {
