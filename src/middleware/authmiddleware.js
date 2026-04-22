@@ -21,7 +21,7 @@ const protegir = async (req, res, next) => {
 
     if (!res.usuari) {
       return res.status(401).json({
-        error: "Usuario No Valido",
+        error: "Usuario No Valido token",
       });
     }
 
