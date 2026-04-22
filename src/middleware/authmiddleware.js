@@ -16,7 +16,7 @@ const protegir = async (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.usuari = await Usuarios.findById(decoded.id);
 
     if (!res.usuari) {
@@ -31,23 +31,22 @@ const protegir = async (req, res, next) => {
   }
 };
 
-
 const autorizar = (...rols) => {
-    return (req,res,next) => {
-        if(!req.usuari){
-            return res.status(401).json({
-                error: "Usuario no valido"
-            })
-        }
-
-        if(!rols.includes(req.usuari.rol)){
-            return res.status(403).json({
-                error:"No tienes permisos"
-            })
-        }
-
-        next()
+  return (req, res, next) => {
+    if (!req.usuari) {
+      return res.status(401).json({
+        error: "Usuario no valido",
+      });
     }
-}
 
-export {protegir,autorizar}
+    if (!rols.includes(req.usuari.rol)) {
+      return res.status(403).json({
+        error: "No tienes permisos",
+      });
+    }
+
+    next();
+  };
+};
+
+export { protegir, autorizar };
