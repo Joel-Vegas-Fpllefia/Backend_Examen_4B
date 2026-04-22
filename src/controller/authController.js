@@ -15,7 +15,9 @@ const create_user = async (req, res) => {
       password,
     });
 
-    const token = jwt.sign({ id: usuari.id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ id: usuari.id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
 
     res.status(201).json({
       token,
@@ -28,5 +30,4 @@ const create_user = async (req, res) => {
   }
 };
 
-
-export {create_user}
+export { create_user };
